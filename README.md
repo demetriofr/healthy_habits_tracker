@@ -124,7 +124,7 @@ create database healthy_habits_tracker;
 ```                                                                                                                                 
 4. В .env добавите данные из env.sample.                                                                                            
 5. Запустите кэширование с помощью redis.                                                                                           
-6. Создайте суперюзера использую команду `python3 manage.py ccsu`.                                                                  
+6. Создайте суперюзера использую команду `python3 manage.py csu`.                                                                  
 7. Запустите периодические задачи 
    - Celery worker `celery -A my_project worker —loglevel=info`.
    - Планировщик Celery beat `celery -A my_project beat —loglevel=info`.                                        
