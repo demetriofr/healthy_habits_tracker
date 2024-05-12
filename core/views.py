@@ -8,6 +8,7 @@ from rest_framework.generics import (
 from .models import Habit
 from .serializers import HabitSerializer
 from .paginators import HabitsListPagination
+from .permissions import IsOwnerCRUDEnabled
 
 
 class HabitCreateAPIView(CreateAPIView):
@@ -16,7 +17,7 @@ class HabitCreateAPIView(CreateAPIView):
     def perform_create(self, serializer):
         """Create a new Habit object with the current user's id."""
 
-        return serializer.save(user=self.request.user)
+        serializer.save(user=self.request.user)
 
 
 class HabitsOwnerListAPIView(ListAPIView):
@@ -42,7 +43,9 @@ class HabitsListAPIView(ListAPIView):
 class HabitUpdateAPIView(UpdateAPIView):
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
+    permission_classes = [IsOwnerCRUDEnabled]
 
 
 class HabitDestroyAPIView(DestroyAPIView):
     queryset = Habit.objects.all()
+    permission_classes = [IsOwnerCRUDEnabled]

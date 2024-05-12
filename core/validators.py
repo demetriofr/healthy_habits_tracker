@@ -43,5 +43,6 @@ class PeriodicityIsNotZeroOrAboveSevenDaysValidator:
 
     def __call__(self, data):
         periodicity = data.get('periodicity')
-        if periodicity > 7 or periodicity < 1:
-            raise ValidationError('Periodicity is not 0 or above 7 days.')
+        if periodicity is not None:
+            if periodicity > 7 or periodicity < 1:
+                raise ValidationError('Periodicity is not 0 or above 7 days.')
