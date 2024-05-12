@@ -13,6 +13,11 @@ from .paginators import HabitsListPagination
 class HabitCreateAPIView(CreateAPIView):
     serializer_class = HabitSerializer
 
+    def perform_create(self, serializer):
+        """Create a new Habit object with the current user's id."""
+
+        return serializer.save(user=self.request.user)
+
 
 class HabitsOwnerListAPIView(ListAPIView):
     serializer_class = HabitSerializer

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from datetime import timedelta
 from dotenv import load_dotenv
 
 
@@ -20,7 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Add secrets information from .env to settings
 load_dotenv()
-
 
 
 # Quick-start development settings - unsuitable for production
@@ -143,6 +143,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=int(os.getenv('ACCESS_TOKEN_LIFETIME'))),  # Increase token lifetime
 }
 
 NULLABLE = {
