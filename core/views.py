@@ -1,3 +1,43 @@
-from django.shortcuts import render
+from rest_framework.generics import (
+    CreateAPIView,
+    ListAPIView,
+    UpdateAPIView,
+    DestroyAPIView
+)
 
-# Create your views here.
+from .models import Habit
+from .serializers import HabitSerializer
+from .paginators import HabitsListPagination
+
+
+class HabitCreateAPIView(CreateAPIView):
+    serializer_class = HabitSerializer
+
+
+class HabitsOwnerListAPIView(ListAPIView):
+    serializer_class = HabitSerializer
+    pagination_class = HabitsListPagination
+
+    def get_queryset(self):
+        """Return a queryset of Habit objects filtered by the current user's id."""
+
+        return Habit.objects.filter(user=self.request.user.id)
+
+
+class HabitsListAPIView(ListAPIView):
+    serializer_class = HabitSerializer
+    pagination_class = HabitsListPagination
+
+    def get_queryset(self):
+        """Return a queryset of Habit objects filtered by the 'is_public' field."""
+
+        return Habit.objects.filter(is_public=True)
+
+
+class HabitUpdateAPIView(UpdateAPIView):
+    serializer_class = HabitSerializer
+    queryset = Habit.objects.all()
+
+
+class HabitDestroyAPIView(DestroyAPIView):
+    queryset = Habit.objects.all()
