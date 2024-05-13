@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'drf_yasg',
+    'django_celery_beat',
 
     'users',
     'core',
@@ -161,3 +162,8 @@ NULLABLE = {
 CORS_ALLOWED_ORIGINS = [os.getenv('CORS_ALLOWED_ORIGINS')]
 CSRF_TRUSTED_ORIGINS = [os.getenv('CSRF_ALLOWED_ORIGINS')]
 CORS_ALLOWED_CREDENTIALS = os.getenv('CORS_ALLOWED_CREDENTIALS')
+
+
+# Celery settings
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
