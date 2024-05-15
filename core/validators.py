@@ -15,8 +15,10 @@ class ExecutionTimeValidator:
     """Class to validate that execution time is don't be above 120 seconds."""
 
     def __call__(self, data):
-        if data.get('execution_time') > 120:
-            raise ValidationError('Execution time is don\'t be above 120 seconds.')
+        execution_time = data.get('execution_time')
+        if execution_time is not None:
+            if data.get('execution_time') > 120:
+                raise ValidationError('Execution time is don\'t be above 120 seconds.')
 
 
 class RelatedHabitIsPleasantTrueValidator:
@@ -34,8 +36,9 @@ class PleasantHabitIsNotRewardOrRelatedHabitValidator:
     """Class to validate that pleasant habit doesn't have reward or related habit."""
 
     def __call__(self, data):
-        if data.get('reward') or data.get('related_habit'):
-            raise ValidationError('Pleasant habit must not have reward or related habit.')
+        if data.get('is_pleasant'):
+            if data.get('reward') or data.get('related_habit'):
+                raise ValidationError('Pleasant habit must not have reward or related habit.')
 
 
 class PeriodicityIsNotZeroOrAboveSevenDaysValidator:
