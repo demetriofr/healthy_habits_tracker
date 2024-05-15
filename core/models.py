@@ -9,11 +9,13 @@ class Habit(models.Model):
     time = models.CharField(max_length=100, verbose_name='время')
     action = models.CharField(max_length=150, verbose_name='действие')
     is_pleasant = models.BooleanField(default=False, verbose_name='признак приятной привычки')
-    related_habit = models.ForeignKey('self', on_delete=models.CASCADE, **NULLABLE, verbose_name='связанная привычка')
+    related_habit = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='связанная привычка', **NULLABLE)
     periodicity = models.PositiveSmallIntegerField(default=1, verbose_name='периодичность')
     reward = models.CharField(max_length=150, verbose_name='вознаграждение', **NULLABLE)
     execution_time = models.PositiveSmallIntegerField(verbose_name='время выполнения')
     is_public = models.BooleanField(default=False, verbose_name='признак публичности')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
+    executed_time = models.DateTimeField(verbose_name='время выполнения', **NULLABLE)
 
     def __str__(self):
         """

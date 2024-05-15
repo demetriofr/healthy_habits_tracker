@@ -21,6 +21,7 @@ class Command(BaseCommand):
             email=getenv('CSU_EMAIL'),
             first_name=getenv('CSU_FIRST_NAME'),
             last_name=getenv('CSU_LAST_NAME'),
+            user_id_telegram=getenv('CSU_ID_TELEGRAM'),
             is_staff=True,
             is_superuser=True,
         )

@@ -1,0 +1,24 @@
+{
+  "data_test_user_1": {
+      "email": "test@test.ov",
+      "password": "123qwe456rty"
+  },
+  "data_test_habit_create_1": {
+    "place": "Test place 1",
+    "time": "Test time 1",
+    "action": "Test action 1",
+    "is_pleasant": false,
+    "periodicity": 1,
+    "reward": "Test reward 1",
+    "execution_time": 100,
+    "is_public": false},
+  "data_test_habit_create_1_control": {
+    "place": "Test place 1",
+    "time": "Test time 1",
+    "action": "Test action 1",
+    "is_pleasant": false,
+    "periodicity": 1,
+    "reward": "Test reward 1",
+    "execution_time": 100,
+    "is_public": false}
+}

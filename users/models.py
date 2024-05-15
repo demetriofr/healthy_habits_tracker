@@ -9,6 +9,7 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(unique=True, max_length=254, verbose_name='электронная почта')
+    user_id_telegram = models.CharField(max_length=32, verbose_name='id пользователя в телеграм', **NULLABLE)
 
     # Additional fields
     phone = models.CharField(max_length=50, verbose_name='номер телефона', **NULLABLE)
