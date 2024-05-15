@@ -168,10 +168,10 @@ CORS_ALLOWED_CREDENTIALS = os.getenv('CORS_ALLOWED_CREDENTIALS')
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 
-# # Celery beat settings
+# Celery beat settings
 # CELERY_BEAT_SCHEDULER = {
 #     'task-name': {
-#         'task': 'core.services.schedule_for_check_periodicity_and_report',
+#         'task': 'core.tasks.check_periodicity_and_report',
 #         'schedule': timedelta(minutes=1),
 #     }
 # }
